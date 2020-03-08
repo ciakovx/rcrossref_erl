@@ -1,0 +1,6 @@
+install.packages("rcrossref")
+install.packages("roadoi")
+install.packages("dplyr")
+install.packages("purrr")
+install.packages("stringr")
+install.packages("tidyr")
