@@ -245,7 +245,7 @@ jlsc_publications_auth %>%
 
 # assign the PLOS ISSN and get the last 25 articles on deposit
 plosone_issn <- '1932-6203'
-plosone_publications <- cr_journals(issn = plosone_issn, works = TRUE, limit = 25) %>%
+plosone_publications <- cr_journals(issn = plosone_issn, works = TRUE, limit = 5) %>%
   pluck("data")
 
 # use the toJSON function to convert the output to JSON
@@ -282,12 +282,16 @@ my_dois_works <- rcrossref::cr_works(dois = my_dois) %>%
 my_dois_works %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 
-# print the type of each column (e.g. character, numeric, logical, list)
-purrr::map_chr(jlsc_ku_oa, typeof)
+# query to get data on a specific PLOS article
+plos_article <- cr_works(dois = '10.1371/journal.pone.0228782') %>%
+  purrr::pluck("data")
 
-# unnest the author column
-jlsc_ku_oa %>%
-    tidyr::unnest(author)
+# print the type of each column (e.g. character, numeric, logical, list)
+purrr::map_chr(plos_article, typeof)
+
+# unnest author column
+plos_article %>%
+    tidyr::unnest(author, .drop = TRUE)
 
 # do a general query for the term open access and a field query to return results where the author name includes Suber
 suber_oa <- cr_works(query = 'open+access', flq = c(`query.author` = 'suber')) %>%
@@ -312,7 +316,7 @@ suber_isbn <- cr_works(flq = c(`query.author` = 'suber',
 
 # print the data frame with select columns
 suber_isbn %>%
-  dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
+  dplyr::select(title, doi, issued, url, publisher, type, author)
 
 # Use c() to create a vector of DOIs
 my_dois <- c("10.2139/ssrn.2697412", 
@@ -373,23 +377,30 @@ my_references_works_df %>%
 # print the title column
 my_references_works_df$title
 
-# assign the PLOS ONE ISSN and get the last two articles on file
-plosone_issn <- '1932-6203'
-plosone_publications <- cr_journals(issn = plosone_issn, works = TRUE, limit = 2) %>%
+# Use c() to create a vector of DOIs
+my_dois <- c("10.2139/ssrn.2697412", 
+                        "10.1016/j.joi.2016.08.002", 
+                        "10.1371/journal.pone.0020961", 
+                        "10.3389/fpsyg.2018.01487", 
+                        "10.1038/d41586-018-00104-7", 
+                        "10.12688/f1000research.8460.2", 
+                        "10.7551/mitpress/9286.001.0001")
+
+# pass the my_dois vector to cr_works()
+my_dois_works <- rcrossref::cr_works(dois = my_dois) %>%
   pluck("data")
 
 # use map_chr to print the column types
-purrr::map_chr(plosone_publications, typeof)
+purrr::map_chr(my_dois_works, typeof)
 
 # use mutate() to coerce list columns to character vectors
-plosone_publications_mutated <- plosone_publications %>%
+my_dois_mutated <- my_dois_works %>%
   dplyr::mutate(author = as.character(author)) %>%
+  dplyr::mutate(assertion = as.character(assertion)) %>%
   dplyr::mutate(link = as.character(link)) %>%
   dplyr::mutate(license = as.character(license)) %>%
-  dplyr::mutate(reference = as.character(reference)) %>%
-  dplyr::mutate(funder = as.character(funder)) %>%
-  dplyr::mutate("clinical-trial-number" = as.character("clinical-trial-number"))
-write.csv(plosone_publications_mutated, "plosone_publications_mutated.csv")
+  dplyr::mutate(reference = as.character(reference))
+write.csv(my_dois_mutated, "my_dois_mutated.csv")
 
 # install the roadoi package
 install.packages("roadoi")
