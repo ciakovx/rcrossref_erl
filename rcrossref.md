@@ -7,7 +7,11 @@ Azure Notebooks is a free hosted service to develop and run Jupyter notebooks in
 
 We are using these platforms to avoid having to install R and R Studio onto your own computer. Furthermore, by interacting with R in this notebook, you will be able to execute code that I have already written, and see explanations of it first hand. Because this is such a brief session, we cannot go into detail about learning the R language, but I have provided some resources at the end of this document.
 
-If you plan on using `rcrossref` more extensively, I would recommend downloading R and R Studio. Also, the Crossref team encourages requests with appropriate contact information, and will forward you to a dedicated API cluster for improved performance when you share your email with them. We cannot do that in this notebook, but you can do that in R.
+I have also created a **binder** of this project, which will allow you to launch it in RStudio in your browser without having to download anything. Though we will not be using this as the basis of today's session, it may be of some use to you. Launch it at 
+
+[![launch binder](https://camo.githubusercontent.com/483bae47a175c24dfbfc57390edd8b6982ac5fb3/68747470733a2f2f6d7962696e6465722e6f72672f62616467655f6c6f676f2e737667)](https://mybinder.org/v2/gh/ciakovx/rcrossref_erl/master?urlpath=rstudio)
+
+If you plan on using `rcrossref` more extensively, I would recommend downloading R and R Studio to your own computer and using it there. Also, the Crossref team encourages requests with appropriate contact information, and will forward you to a dedicated API cluster for improved performance when you share your email with them. We cannot do that in this notebook, but you can do that in R.
 
 For a more detailed walkthrough of this entire lesson, including instructions for downloading R and R Studio, sharing your email with Crossref, and much more, please visit the set of tutorials at https://ciakovx.github.io/fsci_syllabus.html.
 
@@ -18,14 +22,17 @@ This walkthrough is distributed under a [https://creativecommons.org/licenses/by
 
 <div>
     <br>
-    <img src="images/ccby.png" style="width: 400px;">
+    <a>
+        <img src="images/ccby.png" style="width: 400px;">
+    </a>
 </div>
 
 # Jupyter Notebooks
 
 <div>
-    <img src="images/jupyter.png" style="width: 400px;">
-</div>
+        <a>
+            <img src="images/jupyter.png" style="width: 400px;">
+</a></div><a>
 
 Jupyter Notebooks have two different keyboard input modes:
 
@@ -48,7 +55,7 @@ Shortcuts when you are in Edit Mode:
 * **Esc** to enter Command Mode
 * **Ctrl + Enter** to Run cell and stay in the cell
 * **Shift + Enter** to Run cell and select the next cell
-* **Alt (or option on Mac) + Enter** to Run cell and 
+* **Alt (or option on Mac) + Enter** to Run cell and insert a new cell below.
 * **Ctrl (or Cmd on Mac) + Z**: Undo
 
 ---
@@ -60,7 +67,7 @@ Then, when you are in the next cell, press Ctrl + Enter. This will print the out
 
 Then, press the down arrow on your keyboard to to to the next cell. Enter Edit Mode (green border) by pressing Enter. Press Alt (or option on Mac) + Enter. This will print the output and create a new cell.
 
-Then press the down arrow or select the new empty cell. Make sure you are in Command Mode (blue border). Press D twice to delete the new cell.
+Then press the down arrow or select the new empty cell. Make sure you are in Command Mode (blue border). Press D twice to delete the new cell.</a>
 
 
 ```R
@@ -113,7 +120,6 @@ library(dplyr)
 library(purrr)
 library(stringr)
 library(tidyr)
-library(readr)
 
 # increase number of columns and rows displayed when we print a table
 options(repr.matrix.max.cols=100, repr.matrix.max.rows=20)
@@ -121,14 +127,18 @@ options(repr.matrix.max.cols=100, repr.matrix.max.rows=20)
 
 <div>
     <br>
-    <img src="images/tidyverse.png" style="width: 150px;">
+    <a>
+        <img src="images/tidyverse.png" style="width: 150px;">
+    </a>
 </div>
 
 # R Basics
 
 <div>
     <br>
-    <img src="images/R.png" style="width: 200px;">
+    <a>
+        <img src="images/R.png" style="width: 200px;">
+    </a>
     <br>
 </div>
 
@@ -147,6 +157,7 @@ Evaluate this expression:
 
 
 ```R
+# Press Ctrl + Enter or click the Run button to evaluate 2 + 2
 2 + 2
 ```
 
@@ -176,6 +187,7 @@ As we saw above, you can also use the `print()` function:
 
 
 ```R
+# using print() will do the same thing as just typing the variable in, it just makes it explicit
 print(y)
 ```
 
@@ -263,13 +275,30 @@ sum(3, 4, na.rm = TRUE)
 
 Functions can be nested within each other. For example, `sqrt()` takes the square root of the number provided in the function call. Therefore you can run `sum(sqrt(9), 4)` to take the sum of the square root of 9 (3) and add it to 4. Or you could write the quadratic formula: `[(-b) + sqrt((b^2) - 4ac)] / (2*a)`.
 
-# `rcrossref`
+# Crossref &amp; `rcrossref`
+
+## Crossref
+
+<div>
+    <br>
+    <a>
+        <img src="images/crossref-logo.png" style="width: 200px;">
+    </a>
+    <br>
+</div>
+
+
+Crossref is a a not-for-profit membership organization dedicated to interlinking scholarly metadata, including journals, books, conference proceedings, working papers, technical reports, data sets, authors, funders, and more. The [Crossref REST API](https://github.com/CrossRef/rest-api-doc) allows anybody to search and reuse members' metadata in a variety of ways. Read [examples of user stories](https://www.crossref.org/services/metadata-delivery/user-stories/).
+
+## `rcrossref`
 
 `rcrossref` is a package developed by [Scott Chamberlain](https://scottchamberlain.info/), Hao Zhu, Najko Jahn, Carl Boettiger, and Karthik Ram, part of the [rOpenSci](https://ropensci.org/) set of packages. rOpenSci is an incredible organization dedicated to open and reproducible research using shared data and reusable software. I strongly recommend you browse their set of packages at https://ropensci.org/packages/.
 
 <div>
     <br>
-    <img src="images/ropensci.png" style="width: 200px;">
+    <a>
+        <img src="images/ropensci.png" style="width: 200px;">
+    </a>
     <br>
 </div>
 
@@ -320,6 +349,7 @@ Introduction to map(): extract elements](https://jennybc.github.io/purrr-tutoria
 
 
 ```R
+# get information about the journal and pluck the data
 plosone_details <- rcrossref::cr_journals(issn = plosone_issn, works = FALSE) %>%
   purrr::pluck("data")
 ```
@@ -373,6 +403,7 @@ You can use the $ symbol to work with particular variables. For example, the `pu
 
 
 ```R
+# print the publisher variable
 plosone_details$publisher
 ```
 
@@ -380,13 +411,15 @@ The total number of DOIs on file:
 
 
 ```R
+# print the total number of DOIs
 plosone_details$total_dois
 ```
 
-Whether they deposit data in Crossref on funders of the articles they publish (a TRUE/FALSE value–called “logical” in R):
+Whether the data publishers provide on funders of articles they publish is current in Crossref (a TRUE/FALSE value–called “logical” in R):
 
 
 ```R
+# is funder data current on deposits?
 plosone_details$deposits_funders_current
 ```
 
@@ -408,7 +441,8 @@ plosone_details$deposits_funders_current
 
 
 ```R
-# look up journal details using the cr_journals function and assign it to a new value (e.g. plosone_details)
+# look up journal details using the cr_journals function and assign it to a new value (e.g. plosone_details). 
+# Remember to include a %>% pipe and call purrr::pluck("data")
 
 ```
 
@@ -424,6 +458,7 @@ To get metadata for the publications themselves rather than data about the journ
 
 
 ```R
+# get metadata on articles by setting works = TRUE
 plosone_publications <- cr_journals(issn = plosone_issn, works = TRUE, limit = 25) %>%
   pluck("data")
 ```
@@ -444,6 +479,7 @@ Let's explore the data frame:
 
 
 ```R
+# print dimensions of this data frame
 dim(plosone_publications)
 ```
 
@@ -451,6 +487,7 @@ When we run `dim()` (dimensions) on this result, we now see a different number o
 
 
 ```R
+# print column names
 names(plosone_publications)
 ```
 
@@ -458,6 +495,7 @@ We view the entire data frame below. Because there are some nested lists within 
 
 
 ```R
+# print select columns from the data frame
 plosone_publications %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -470,8 +508,11 @@ You can also pass multiple ISSNs to `cr_journals`. Here we create 2 new values, 
 
 
 ```R
+# assign the JAMA and JAH ISSNs
 jama_issn <- '1538-3598'
 jah_issn <- '0021-8723'
+
+# get the last 10 publications on deposit from each journal. For multiple ISSNs, use c() to combine them
 jah_jama_publications <- rcrossref::cr_journals(issn = c(jama_issn, jah_issn), works = T, limit = 10) %>%
   purrr::pluck("data")
 ```
@@ -484,7 +525,13 @@ Going back to our `jah_jama_publications` object, we have a dataframe composed o
 
 
 ```R
+# print column names
 names(jah_jama_publications)
+```
+
+
+```R
+# print data frame with select columns
 jah_jama_publications %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -574,10 +621,15 @@ Here, we will get all articles from the *Journal of Librarianship and Scholarly 
 
 
 ```R
+# assign the JLSC ISSN
 jlsc_issn <- "2162-3309"
-jlsc_publications_2019 <- rcrossref::cr_journals(issn = jlsc_issn, works = T, limit = 25,
+
+# get articles published since January 1, 2019
+jlsc_publications_2019 <- rcrossref::cr_journals(issn = jlsc_issn, works = T, 
                                                  filter = c(from_pub_date='2019-01-01')) %>%
   purrr::pluck("data")
+
+# print the dataframe with select column
 jlsc_publications_2019 %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -586,23 +638,27 @@ jlsc_publications_2019 %>%
 
 You can also return all articles funded by a specific funder. See the [Crossref Funder Registry](https://gitlab.com/crossref/open_funder_registry) for a list of funders and their DOIs. 
 
-Here, we will combine two filters: `award.funder` and `from_pub_date` to return all articles published in PLoS ONE where at least one funder is the 
+Here, we will combine two filters: `award.funder` and `from_pub_date` to return all articles published in PLoS ONE where a) at least one funder is the National Institutes of Health, and b) the article was published after March 1, 2020. Note that we set a `limit` here of 25 because we are doing a teaching activity and we don't want to send heavy queries. If you were doing this on your own, you would likely want to remove the limit.
 
 
 ```R
+# assign the PLoS ONE ISSN and the NIH Funder DOI
 plosone_issn <- '1932-6203'
 nih_funder_doi <- '10.13039/100000002'
-plosone_publications_orcids <- rcrossref::cr_journals(issn = plosone_issn, works = T, limit = 25,
+
+# get articles published in PLoS since 3/1 funded by NIH
+plosone_publications_nih <- rcrossref::cr_journals(issn = plosone_issn, works = T, limit = 25,
                                                  filter = c(award.funder = nih_funder_doi,
-                                                           from_pub_date = '2020-02-01')) %>%
+                                                           from_pub_date = '2020-03-01')) %>%
   purrr::pluck("data")
 ```
 
-We will use `unnest()` from the `tidyr` package. This is described below in [Unnesting List Columns](https://rcrossref2-clarkeiakovakis.notebooks.azure.com/j/notebooks/rcrossref_20200305.ipynb#Unnesting-list-columns).
+We will use `unnest()` from the `tidyr` package to view the data frame here. This is described below in [Unnesting List Columns](https://rcrossref2-clarkeiakovakis.notebooks.azure.com/j/notebooks/rcrossref_20200305.ipynb#Unnesting-list-columns).
 
 
 ```R
-plosone_publications_orcids %>%
+# print the dataframe, first unnesting the funder column
+plosone_publications_nih %>%
     tidyr::unnest(funder)
 ```
 
@@ -615,20 +671,17 @@ You may be interested in licensing information for articles; for instance, gathe
 
 
 ```R
+# assign the PLoS ONE ISSN and get journal details by setting works = FALSE
 plosone_issn <- '1932-6203'
 plosone_details <- rcrossref::cr_journals(issn = plosone_issn, works = FALSE) %>%
   purrr::pluck("data")
 ```
 
-We can check the `deposits_licenses_backfile` and `deposits_licenses_current` variables. If they are `TRUE`, PLoS ONE does send licensing information and it is current. 
+We can check the `deposits_licenses_current` variables to see if license data on file is current. If it is `TRUE`, PLoS ONE does send licensing information and it is current. 
 
 
 ```R
-plosone_details$deposits_licenses_backfile
-```
-
-
-```R
+# is article licensing data on file current?
 plosone_details$deposits_licenses_current
 ```
 
@@ -636,23 +689,25 @@ We can now rerun the query but set `works = TRUE`, and set the `has_license` to 
 
 
 ```R
+# get last 25 articles on file where has_license is TRUE
 plosone_license <- rcrossref::cr_journals(issn = plosone_issn, works = T, limit = 25, filter = c(`has_license` = TRUE)) %>% 
   pluck("data")
 ```
 
 
 ```R
+# print the data with select columns
 plosone_license %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn, license)
 ```
 
-All articles in *PLoS ONE* are CC licensed, so we have no problem getting results. The license data comes in as a nested column. We can unnest it using `tidyr::unnest`, which will be discussed more below. 
+The license data comes in as a nested column. We can unnest it using `tidyr::unnest`, which we used above with funders and will be discussed more below. 
 
 
 ```R
+# print the data frame with license unnested. The .drop argument will drop all other list columns.
 plosone_license %>%
-  dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn, license) %>%
-  tidyr::unnest(license)
+  tidyr::unnest(license, .drop = TRUE)
 ```
 
 This adds four columns all the way to the right: 
@@ -661,32 +716,90 @@ This adds four columns all the way to the right:
 * **delay in days** (Number of days between the publication date of the work and the start date of this license), and 
 * **content.version**, which specifies the version of the article the licensing data pertains to (VOR = Version of Record, AM = Accepted Manuscript, TDM = Text and Data Mining). 
 
-Browsing the rows, we see most are CC BY 4.0.
+Browsing the rows, we see all are CC BY 4.0, which stands to reason given *PLOS ONE* is an open access publisher and [applies the CC BY license](https://journals.plos.org/plosone/s/licenses-and-copyright) to the articles they publish. 
 
 ## Filtering rows and selecting columns with `dplyr`
 
 You can use the `filter()` and `select()` functions from the `dplyr` package if you want to get subsets of this data after you have made the query. Note that this is a completely different `filter` than the one used above inside the `cr_journals()` function. That one was an argument sent with the API call that filtered the results before they were returned. This is a separate function that is part of `dplyr` to help you filter a data frame in R. 
 
+To learn more about the `dplyr` package, read the ["Data Transformation" chapter in *R For Data Science*](https://r4ds.had.co.nz/transform.html).
+
 Above, we retrieved all articles from the *Journal of Librarianship &amp; Scholarly Communication* published after January 1, 2019. Let's say you want only volume 8, issue 1:
 
 
 ```R
+# assign the JLSC ISSN and get all publications after January 1, 2019
 jlsc_issn <- "2162-3309"
 jlsc_publications_2019 <- rcrossref::cr_journals(issn = jlsc_issn, works = T, limit = 25,
                                                  filter = c(from_pub_date='2019-01-01')) %>%
   purrr::pluck("data")
+
+# print the data frame with select columns
+jlsc_publications_2019 %>%
+  dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
+```
+
+
+<table>
+<caption>A tibble: 25 x 11</caption>
+<thead>
+	<tr><th>title</th><th>doi</th><th>volume</th><th>issue</th><th>page</th><th>issued</th><th>url</th><th>publisher</th><th>reference.count</th><th>type</th><th>issn</th></tr>
+	<tr><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Considering Creative Activity in Institutional Repositories: An Exploration of Faculty Perceptions                  </td><td>10.7710/2162-3309.2312</td><td>8</td><td>1</td><td>2312</td><td>2020-02-25</td><td>http://dx.doi.org/10.7710/2162-3309.2312</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Avoiding the “Axe”: Advancing Affordable and Open Education Resources at a Midsize University                       </td><td>10.7710/2162-3309.2259</td><td>7</td><td>1</td><td>NA  </td><td>2019-05-20</td><td>http://dx.doi.org/10.7710/2162-3309.2259</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>The Development of the Journal Evaluation Tool to Evaluate the Credibility of Publication Venues                    </td><td>10.7710/2162-3309.2250</td><td>7</td><td>1</td><td>NA  </td><td>2019-06-04</td><td>http://dx.doi.org/10.7710/2162-3309.2250</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Meaningful Metrics: A 21st Century Librarian's Guide to Bibliometrics, Altmetrics, and Research Impact [Book Review]</td><td>10.7710/2162-3309.2290</td><td>7</td><td>1</td><td>NA  </td><td>2019-01-15</td><td>http://dx.doi.org/10.7710/2162-3309.2290</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Bibliometrics and Research Evaluation: Uses and Abuses                                                              </td><td>10.7710/2162-3309.2286</td><td>7</td><td>1</td><td>NA  </td><td>2019-01-10</td><td>http://dx.doi.org/10.7710/2162-3309.2286</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Creating a Library Publishing Program: Your Options Are Limited                                                     </td><td>10.7710/2162-3309.2262</td><td>7</td><td>1</td><td>NA  </td><td>2019-01-10</td><td>http://dx.doi.org/10.7710/2162-3309.2262</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Online Safety and Academic Scholarship: Exploring Researchers’ Concerns from Ghana                                  </td><td>10.7710/2162-3309.2263</td><td>7</td><td>1</td><td>NA  </td><td>2019-01-15</td><td>http://dx.doi.org/10.7710/2162-3309.2263</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Data Management Practices in Academic Library Learning Analytics: A Critical Review                                 </td><td>10.7710/2162-3309.2268</td><td>7</td><td>1</td><td>NA  </td><td>2019-02-22</td><td>http://dx.doi.org/10.7710/2162-3309.2268</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Strategies for Supporting OER Adoption through Faculty and Instructor Use of a Federated Search Tool                </td><td>10.7710/2162-3309.2279</td><td>7</td><td>1</td><td>NA  </td><td>2019-02-22</td><td>http://dx.doi.org/10.7710/2162-3309.2279</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>When a Repository Is Not Enough: Redesigning a Digital Ecosystem to Serve Scholarly Communication                   </td><td>10.7710/2162-3309.2225</td><td>7</td><td>1</td><td>NA  </td><td>2019-02-26</td><td>http://dx.doi.org/10.7710/2162-3309.2225</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+	<tr><td>Library Publishers as Educators: Crafting Curriculum for Undergraduate Research Journals                                 </td><td>10.7710/2162-3309.2296</td><td>7</td><td>1</td><td>NA</td><td>2019-05-06</td><td>http://dx.doi.org/10.7710/2162-3309.2296</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Embracing New Trends in Scholarly Communication: From Competency Requirements in the Workplace to LIS Curriculum Presence</td><td>10.7710/2162-3309.2291</td><td>7</td><td>1</td><td>NA</td><td>2019-07-19</td><td>http://dx.doi.org/10.7710/2162-3309.2291</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>The Five Laws of OER: Observations from Ranganathan                                                                      </td><td>10.7710/2162-3309.2299</td><td>7</td><td>1</td><td>NA</td><td>2019-08-20</td><td>http://dx.doi.org/10.7710/2162-3309.2299</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>JLSC Board Editorial 2019                                                                                                </td><td>10.7710/2162-3309.2334</td><td>7</td><td>1</td><td>NA</td><td>2019-09-12</td><td>http://dx.doi.org/10.7710/2162-3309.2334</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>We Can Do I.T.: Women in Library Information Technology                                                                  </td><td>10.7710/2162-3309.2320</td><td>7</td><td>1</td><td>NA</td><td>2019-09-16</td><td>http://dx.doi.org/10.7710/2162-3309.2320</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>A Team Approach: Library Publishing Partnerships with Scholarly Societies                                                </td><td>10.7710/2162-3309.2326</td><td>7</td><td>1</td><td>NA</td><td>2019-11-21</td><td>http://dx.doi.org/10.7710/2162-3309.2326</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Volume 7 Masthead                                                                                                        </td><td>10.7710/2162-3309.2351</td><td>7</td><td>1</td><td>NA</td><td>2019-12-04</td><td>http://dx.doi.org/10.7710/2162-3309.2351</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Scholarly Publishing Literacy at the University of South Florida Libraries: From Advising to Active Involvement          </td><td>10.7710/2162-3309.2310</td><td>7</td><td>1</td><td>NA</td><td>2019-12-04</td><td>http://dx.doi.org/10.7710/2162-3309.2310</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>From Meow to ROAR: Expanding Open Access Repository Services at the University of Houston Libraries                      </td><td>10.7710/2162-3309.2309</td><td>7</td><td>1</td><td>NA</td><td>2019-12-13</td><td>http://dx.doi.org/10.7710/2162-3309.2309</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>Grey Literature: Use, Creation, and Citation Habits of Faculty Researchers across Disciplines                            </td><td>10.7710/2162-3309.2314</td><td>7</td><td>1</td><td>NA</td><td>2019-12-18</td><td>http://dx.doi.org/10.7710/2162-3309.2314</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+</tbody>
+</table>
+
+
+
+
+```R
+# use filter from dplyr to get only volume 8, issue 1
 jlsc_8_1 <- jlsc_publications_2019 %>%
   dplyr::filter(volume == "8",
          issue == "1") 
+
+# print the data frame with select columns
 jlsc_8_1 %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
 
-`filter()` will go through each row within the column specified and keep only those values matching the value you input. As we have seen, `select()` keeps only the variables you mention.
 
-Again this is different from issuing the query to Crossref to get back only volume 8, issue 1. 
+<table>
+<caption>A tibble: 1 x 11</caption>
+<thead>
+	<tr><th>title</th><th>doi</th><th>volume</th><th>issue</th><th>page</th><th>issued</th><th>url</th><th>publisher</th><th>reference.count</th><th>type</th><th>issn</th></tr>
+	<tr><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Considering Creative Activity in Institutional Repositories: An Exploration of Faculty Perceptions</td><td>10.7710/2162-3309.2312</td><td>8</td><td>1</td><td>2312</td><td>2020-02-25</td><td>http://dx.doi.org/10.7710/2162-3309.2312</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+</tbody>
+</table>
 
-**Note:** be careful of filtering by ISSN. If a journal has multiple ISSNs they'll be combined in a single cell with a comma and the `filter()` will fail, as with JAMA above. In this case it may be wiser to use `str_detect()`, as described a couple code chunks down.
+
+
+`filter()` will go through each row of your existing `jlsc_publications_2019` data frame, and keep only those rows with values matching the filters you input. **Note:** be careful of filtering by ISSN. If a journal has multiple ISSNs they'll be combined in a single cell with a comma and the `filter()` will fail, as with JAMA above. In this case it may be wiser to use `str_detect()`, as described a couple code chunks down.
 
 
 ```R
@@ -697,32 +810,64 @@ We can use `filter()` to get a single article from within this data frame if we 
 
 
 ```R
+# filter to get "The Five Laws of OER" article by DOI
 jlsc_article <- jlsc_publications_2019 %>%
   dplyr::filter(doi == "10.7710/2162-3309.2299") 
+
+# print data frame with select columns
 jlsc_article %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
+
+
+<table>
+<caption>A tibble: 1 x 11</caption>
+<thead>
+	<tr><th>title</th><th>doi</th><th>volume</th><th>issue</th><th>page</th><th>issued</th><th>url</th><th>publisher</th><th>reference.count</th><th>type</th><th>issn</th></tr>
+	<tr><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>The Five Laws of OER: Observations from Ranganathan</td><td>10.7710/2162-3309.2299</td><td>7</td><td>1</td><td>NA</td><td>2019-08-20</td><td>http://dx.doi.org/10.7710/2162-3309.2299</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+</tbody>
+</table>
+
+
 
 Or by title:
 
 
 ```R
+# use str_detect to search the title column for articles that include the term OER
 jlsc_article <- jlsc_publications_2019 %>%
   dplyr::filter(stringr::str_detect(title, "OER"))
+
+# print the data frame with select column
 jlsc_article %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
+
+
+<table>
+<caption>A tibble: 2 x 11</caption>
+<thead>
+	<tr><th>title</th><th>doi</th><th>volume</th><th>issue</th><th>page</th><th>issued</th><th>url</th><th>publisher</th><th>reference.count</th><th>type</th><th>issn</th></tr>
+	<tr><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Strategies for Supporting OER Adoption through Faculty and Instructor Use of a Federated Search Tool</td><td>10.7710/2162-3309.2279</td><td>7</td><td>1</td><td>NA</td><td>2019-02-22</td><td>http://dx.doi.org/10.7710/2162-3309.2279</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+	<tr><td>The Five Laws of OER: Observations from Ranganathan                                                 </td><td>10.7710/2162-3309.2299</td><td>7</td><td>1</td><td>NA</td><td>2019-08-20</td><td>http://dx.doi.org/10.7710/2162-3309.2299</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+</tbody>
+</table>
+
+
 
 Here, we use the `str_detect()` function from the `stringr` package, which is loaded as part of the `tidyverse`, in order to find a single term (OER) in the title.
 
 Remember that these `dplyr` and `stringr` functions are searching through our existing data frame `jlsc_publications_2019`, not issuing new API calls.
 
-To learn more about the `dplyr` package, read the ["Data Transformation" chapter in *R For Data Science*](https://r4ds.had.co.nz/transform.html).
-
 ## Field queries
 
-At the risk of confusing you further (but in the interests of providing more information), there is yet another way of making your query more precise, and that is to use a field query (`flq`) argument to `cr_journals()`. This allows you to specify additional variables, which are listed in the [Crossref documentation](https://github.com/CrossRef/rest-api-doc#field-queries) and reproduced below. You *must* provide an ISSN--in other words, you can't run a field query for authors across all journals. 
-
+There is yet another way of making your query more precise, and that is to use a field query (`flq`) argument to `cr_journals()`. This allows you to search in specific bibliographic fields such as author, editor, titles, ISSNs, and author affiliation (not widely available). These are listed in the [Crossref documentation](https://github.com/CrossRef/rest-api-doc#field-queries) and reproduced below. You *must* provide an ISSN--in other words, you can't run a field query for authors across all journals. 
 
 | Field query parameter | Description |
 |-----------------------|-------------|
@@ -742,13 +887,61 @@ Here, we get all publications from the Journal of Librarianship and Scholarly Co
 
 
 ```R
+# assign JLSC ISSN and query the bibliographic field for terms mentioning open access. 
 jlsc_issn <- "2162-3309"
 jlsc_publications_oa <- rcrossref::cr_journals(issn = jlsc_issn, works = T, limit = 25,
                                             flq = c(`query.bibliographic` = 'open access')) %>%
   purrr::pluck("data")
+
+# print the data frame with select columns
 jlsc_publications_oa %>%
   dplyr::select(title, doi, volume, issue, page, issued, issn, author)
 ```
+
+
+<table>
+<caption>A tibble: 25 x 8</caption>
+<thead>
+	<tr><th>title</th><th>doi</th><th>volume</th><th>issue</th><th>page</th><th>issued</th><th>issn</th><th>author</th></tr>
+	<tr><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;list&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Campus Open Access Funds: Experiences of the KU “One University” Open
+                        Access Author Fund                                 </td><td>10.7710/2162-3309.1252</td><td>3</td><td>1            </td><td>1252</td><td>2015-09-18</td><td>2162-3309</td><td>Rachel        , Allison C.    , Crystal       , Deborah       , Ada           , Gyore         , Reeve         , Cameron-Vedros, Ludwig        , Emmett        , first         , additional    , additional    , additional    , additional    </td></tr>
+	<tr><td>Open Access and the Author-Pays Problem: Assuring Access for Readers and
+                        Authors in the Global Academic Community        </td><td>10.7710/2162-3309.1064</td><td>1</td><td>3            </td><td>1064</td><td>2013-02-28</td><td>2162-3309</td><td>A Townsend, Ada       , Marc L    , Peterson  , Emmett    , Greenberg , first     , additional, additional</td></tr>
+	<tr><td>“Open Don’t Mean Free”: A Reflection on the Potential Advantages and
+                        Disadvantages of Publishing Research via Open Access</td><td>10.7710/2162-3309.1049</td><td>1</td><td>2            </td><td>1049</td><td>2012-09-28</td><td>2162-3309</td><td>Frank C, Manista, first  </td></tr>
+	<tr><td>Open Data, [Open] Access: Linking Data Sharing and Article Sharing in the Earth Sciences                                                          </td><td>10.7710/2162-3309.2150</td><td>5</td><td>General Issue</td><td>NA  </td><td>2017      </td><td>2162-3309</td><td>Samantha , Teplitzky, first    </td></tr>
+	<tr><td>Innovation Fair Abstracts, SPARC 2012 Open Access Meeting                                                                                         </td><td>10.7710/2162-3309.1042</td><td>1</td><td>1            </td><td>1042</td><td>2012-05-15</td><td>2162-3309</td><td>Abstract, Authors , first   </td></tr>
+	<tr><td><span style="white-space: pre-wrap;">Point &amp; Counterpoint Is CC BY the Best Open Access License?                                                                                       </span></td><td>10.7710/2162-3309.1043</td><td>1</td><td><span style="white-space: pre-wrap;">1            </span></td><td>1043</td><td>2012-05-15</td><td>2162-3309</td><td><span style="white-space: pre-wrap;">Klaus     , Sanford   , Graf      , Thatcher  , first     , additional</span></td></tr>
+	<tr><td>Developing Open Access Journals: A Practical Guide                                                                                                </td><td>10.7710/2162-3309.1028</td><td>1</td><td>1            </td><td>1028</td><td>2012-05-15</td><td>2162-3309</td><td>Caitlin, Bakker , first  </td></tr>
+	<tr><td>Up from Under the “Open Access” Bus                                                                                                               </td><td>10.7710/2162-3309.1045</td><td>1</td><td>2            </td><td>1045</td><td>2012-09-28</td><td>2162-3309</td><td>Paul   , Royster, first  </td></tr>
+	<tr><td>Response to “Is CC BY the Best Open Access License?”                                                                                              </td><td>10.7710/2162-3309.1055</td><td>1</td><td>2            </td><td>1055</td><td>2012-09-28</td><td>2162-3309</td><td>Andras, Holl  , first </td></tr>
+	<tr><td>“Free to All”: Library Publishing and the Challenge of Open
+                        Access                                                       </td><td>10.7710/2162-3309.1181</td><td>2</td><td>4            </td><td>1181</td><td>2014-12-11</td><td>2162-3309</td><td>Micah     , Josh      , Vandegrift, Bolick    , first     , additional</td></tr>
+	<tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+	<tr><td>The Accessibility Quotient: A New Measure of Open Access                                                                                                  </td><td>10.7710/2162-3309.1025</td><td>1</td><td>1            </td><td>1025</td><td>2012-05-15</td><td>2162-3309</td><td>Mathew A    , Katharine H , Ellen Finnie, Willmott    , Dunn        , Duranceau   , first       , additional  , additional  </td></tr>
+	<tr><td>All That Glisters: Investigating Collective Funding Mechanisms for Gold
+                        Open Access in Humanities Disciplines                    </td><td>10.7710/2162-3309.1131</td><td>2</td><td>3            </td><td>1131</td><td>2014-08-01</td><td>2162-3309</td><td>Martin Paul, Eve        , first      </td></tr>
+	<tr><td>Foxes Propose New Guidelines for Henhouse Design: Comments on NISO’s
+                        Proposed Open Access Metadata Standards                     </td><td>10.7710/2162-3309.1170</td><td>2</td><td>3            </td><td>1170</td><td>2014-08-01</td><td>2162-3309</td><td>Paul   , Royster, first  </td></tr>
+	<tr><td>Counting the Cost: A Report on APC-Supported Open Access Publishing in a
+                        Research Library                                        </td><td>10.7710/2162-3309.1184</td><td>2</td><td>4            </td><td>1184</td><td>2014-12-11</td><td>2162-3309</td><td>Mark P    , Eva T     , Kerri     , Newton    , Cunningham, O'Connell , first     , additional, additional</td></tr>
+	<tr><td>University Faculty Awareness and Attitudes towards Open Access Publishing
+                        and the Institutional Repository: A Case Study         </td><td>10.7710/2162-3309.1210</td><td>3</td><td>1            </td><td>1210</td><td>2015-05-06</td><td>2162-3309</td><td>Zheng Y (Lan), Yu           , Yang         , Li           , first        , additional   </td></tr>
+	<tr><td>Better Sharing Through Licenses? Measuring the Influence of Creative
+                        Commons Licenses on the Usage of Open Access Monographs     </td><td>10.7710/2162-3309.1187</td><td>3</td><td>1            </td><td>1187</td><td>2015-03-10</td><td>2162-3309</td><td>Ronald , Snijder, first  </td></tr>
+	<tr><td>Open Access Status of Nano ELSI Research: Determining Availability of a
+                        Core Collection of Research for a Disciplinary Repository</td><td>10.7710/2162-3309.1190</td><td>3</td><td>1            </td><td>1190</td><td>2015-06-05</td><td>2162-3309</td><td>Rebecca      , Jessica      , Reznik-Zellen, Adamick      , first        , additional   </td></tr>
+	<tr><td>From Concerned to Cautiously Optimistic: Assessing Faculty Perceptions
+                        and Knowledge of Open Access in a Campus-Wide Study       </td><td>10.7710/2162-3309.1212</td><td>3</td><td>1            </td><td>1212</td><td>2015-06-22</td><td>2162-3309</td><td>Annie M, Gaines , first  </td></tr>
+	<tr><td>A Resonant Message: Aligning Scholar Values and Open Access Objectives in OA Policy Outreach to Faculty and Graduate Students                             </td><td>10.7710/2162-3309.2152</td><td>4</td><td>General Issue</td><td>NA  </td><td>2016      </td><td>2162-3309</td><td>Jane        , Johnson Otto, first       </td></tr>
+	<tr><td>Open Access Policies and Academic Freedom: Understanding and Addressing Conflicts                                                                         </td><td>10.7710/2162-3309.2104</td><td>5</td><td>General Issue</td><td>NA  </td><td>2017      </td><td>2162-3309</td><td>David James, Johnston   , first      </td></tr>
+</tbody>
+</table>
+
+
 
 ### Field query by author, contributor, or editor
 
@@ -758,9 +951,12 @@ The `flq` argument can also be used for authors, contributors, or editors. Here 
 
 
 ```R
+# Use the query.author field query to find JLSC articles with author name Salo
 jlsc_publications_auth <- rcrossref::cr_journals(issn = jlsc_issn, works = T, limit = 25,
                                             flq = c(`query.author` = 'salo')) %>%
   purrr::pluck("data")
+
+# print the data frame with select columns
 jlsc_publications_auth %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -789,9 +985,12 @@ You can view these files in a JSON viewer using the `toJSON()` function from the
 
 
 ```R
+# assign the PLOS ISSN and get the last 25 articles on deposit
 plosone_issn <- '1932-6203'
 plosone_publications <- cr_journals(issn = plosone_issn, works = TRUE, limit = 25) %>%
   pluck("data")
+
+# use the toJSON function to convert the output to JSON
 plosone_publications_json <- jsonlite::toJSON(plosone_publications)
 ```
 
@@ -799,6 +998,7 @@ Print the JSON, triple click inside the box to highlight the text, and copy it t
 
 
 ```R
+# print the JSON
 plosone_publications_json
 ```
 
@@ -808,6 +1008,7 @@ To write to JSON, use `jsonlite::write_json()`
 
 
 ```R
+# write a JSON file
 jsonlite::write_json(plosone_publications_json, "plosone_publications.json")
 ```
 
@@ -826,16 +1027,35 @@ You can pass a DOI directly to `cr_works()` using the `dois` argument:
 
 
 ```R
+# Get metadata for a single article by DOI
 jlsc_ku_oa <- cr_works(dois = '10.7710/2162-3309.1252') %>%
   purrr::pluck("data")
+
+# print the data frame with select columns
 jlsc_ku_oa %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
+
+
+<table>
+<caption>A tibble: 1 x 11</caption>
+<thead>
+	<tr><th>title</th><th>doi</th><th>volume</th><th>issue</th><th>page</th><th>issued</th><th>url</th><th>publisher</th><th>reference.count</th><th>type</th><th>issn</th></tr>
+	<tr><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th><th>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Campus Open Access Funds: Experiences of the KU “One University” Open
+                        Access Author Fund</td><td>10.7710/2162-3309.1252</td><td>3</td><td>1</td><td>1252</td><td>2015-09-18</td><td>http://dx.doi.org/10.7710/2162-3309.1252</td><td>Pacific University Library</td><td>0</td><td>journal-article</td><td>2162-3309</td></tr>
+</tbody>
+</table>
+
+
 
 You can also pass more than one DOI. Here we start by assigning our DOIs to a variable `my_dois`, then pass it to `cr_works()` in the `doi` argument:
 
 
 ```R
+# Use c() to create a vector of DOIs
 my_dois <- c("10.2139/ssrn.2697412", 
                         "10.1016/j.joi.2016.08.002", 
                         "10.1371/journal.pone.0020961", 
@@ -843,8 +1063,12 @@ my_dois <- c("10.2139/ssrn.2697412",
                         "10.1038/d41586-018-00104-7", 
                         "10.12688/f1000research.8460.2", 
                         "10.7551/mitpress/9286.001.0001")
+
+# pass the my_dois vector to cr_works()
 my_dois_works <- rcrossref::cr_works(dois = my_dois) %>%
   pluck("data")
+
+# print the data frame with select columns
 my_dois_works %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -856,6 +1080,7 @@ Authors, links, licenses, funders, and some other values can appear in nested li
 
 
 ```R
+# print the type of each column (e.g. character, numeric, logical, list)
 purrr::map_chr(jlsc_ku_oa, typeof)
 ```
 
@@ -863,6 +1088,7 @@ Our `jlsc_ku_oa` data frame has a nested list for **author**. We can unnest this
 
 
 ```R
+# unnest the author column
 jlsc_ku_oa %>%
     tidyr::unnest(author)
 ```
@@ -892,8 +1118,11 @@ Here we search for the book *Open Access* by Peter Suber by doing a general keyw
 
 
 ```R
+# do a general query for the term open access and a field query to return results where the author name includes Suber
 suber_oa <- cr_works(query = 'open+access', flq = c(`query.author` = 'suber')) %>%
   pluck("data")
+
+# print the data frame with select columns
 suber_oa %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -902,8 +1131,11 @@ Dr. Suber has written lots of materials that includes the term "open access." We
 
 
 ```R
+# use filter() from dplyr to filter that result to include only books
 suber_oa_books <- suber_oa %>%
   filter(type == "book")
+
+# print the data frame with select columns
 suber_oa_books %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -914,9 +1146,12 @@ We could be more specific from the outset by adding bibliographic information in
 
 
 ```R
+# run a different cr_works() query with author set to Suber and his book's ISBN passed to query.bibliographic
 suber_isbn <- cr_works(flq = c(`query.author` = 'suber',
                            `query.bibliographic` = '9780262301732')) %>%
   pluck("data")
+
+# print the data frame with select columns
 suber_isbn %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -929,17 +1164,43 @@ We can use the `cr_cn()` function from the `rcrossref` package to get the citati
 
 
 ```R
+# Use c() to create a vector of DOIs
+my_dois <- c("10.2139/ssrn.2697412", 
+                        "10.1016/j.joi.2016.08.002", 
+                        "10.1371/journal.pone.0020961", 
+                        "10.3389/fpsyg.2018.01487", 
+                        "10.1038/d41586-018-00104-7", 
+                        "10.12688/f1000research.8460.2", 
+                        "10.7551/mitpress/9286.001.0001")
+
+# Use cr_cn to get back citations formatted in Chicago for those DOIs
 my_citations <- rcrossref::cr_cn(my_dois,
                                  format = "text",
                                  style = "chicago-note-bibliography") %>% 
   purrr::map_chr(., purrr::pluck, 1)
+
+# print the formatted citations
 my_citations
 ```
+
+
+<ol class="list-inline">
+	<li>'Frosio, Giancarlo F. “Open Access Publishing: A Literature Review.” SSRN Electronic Journal (2014). doi:10.2139/ssrn.2697412.'</li>
+	<li>'Laakso, Mikael, and Bo-Christer Björk. “Hybrid Open access—A Longitudinal Study.” Journal of Informetrics 10, no. 4 (November 2016): 919–932. doi:10.1016/j.joi.2016.08.002.'</li>
+	<li>'Laakso, Mikael, Patrik Welling, Helena Bukvova, Linus Nyman, Bo-Christer Björk, and Turid Hedlund. “The Development of Open Access Journal Publishing from 1993 to 2009.” Edited by Marcelo Hermes-Lima. PLoS ONE 6, no. 6 (June 13, 2011): e20961. doi:10.1371/journal.pone.0020961.'</li>
+	<li>'Paulus, Frieder M., Nicole Cruz, and Sören Krach. “The Impact Factor Fallacy.” Frontiers in Psychology 9 (August 20, 2018). doi:10.3389/fpsyg.2018.01487.'</li>
+	<li>'Shotton, David. “Funders Should Mandate Open Citations.” Nature 553, no. 7687 (January 2018): 129–129. doi:10.1038/d41586-018-00104-7.'</li>
+	<li>'Tennant, Jonathan P., François Waldner, Damien C. Jacques, Paola Masuzzo, Lauren B. Collister, and Chris. H. J. Hartgerink. “The Academic, Economic and Societal Impacts of Open Access: An Evidence-Based Review.” F1000Research 5 (June 9, 2016): 632. doi:10.12688/f1000research.8460.2.'</li>
+	<li>'Suber, Peter. “Open Access” (2012). doi:10.7551/mitpress/9286.001.0001.'</li>
+</ol>
+
+
 
 Beautiful formatted citations from simply a list of DOIs! You can then write this to a text file using `writeLines`. 
 
 
 ```R
+# write the formatted citations to a text file
 writeLines(my_citations, "my_citations_text.txt")
 ```
 
@@ -947,6 +1208,7 @@ The above is helpful if you need to paste the references somewhere, and there ar
 
 
 ```R
+# look at the first 15 styles Crossref offers
 rcrossref::get_styles()[1:15]
 ```
 
@@ -956,6 +1218,7 @@ In addition to a text file, you can also write it to BibTeX or RIS:
 
 
 ```R
+# Use cr_cn() to get BibTeX files for my DOIs
 my_citations_bibtex <- rcrossref::cr_cn(my_dois, format = "bibtex") %>%
   purrr::map_chr(., purrr::pluck, 1)
 ```
@@ -964,6 +1227,7 @@ Write it to a .bib file using `writeLines()`:
 
 
 ```R
+# write to bibtex file
 writeLines(my_citations_bibtex, "my_citations_bibtex.bib")
 ```
 
@@ -976,9 +1240,33 @@ If each citation is on its own line in your document's bibliography, then you ca
 
 
 ```R
+# read in a CSV file of citations
 my_references <- read.csv("references.txt", stringsAsFactors = FALSE, fileEncoding = "ISO 8859-1")
+
+# print the file
 my_references
 ```
+
+
+<table>
+<caption>A data.frame: 8 x 1</caption>
+<thead>
+	<tr><th>reference</th></tr>
+	<tr><th>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>Frosio, G. F. (2014). Open Access Publishing: A Literature Review. SSRN Electronic Journal. https://doi.org/10.2139/ssrn.2697412                                                                                                                                     </td></tr>
+	<tr><td><span style="white-space: pre-wrap;">Laakso, M., &amp; Bjork, B.-C. (2016). Hybrid open access: A longitudinal study. Journal of Informetrics, 10(4), 919-932. https://doi.org/10.1016/j.joi.2016.08.002                                                                                                      </span></td></tr>
+	<tr><td><span style="white-space: pre-wrap;">Laakso, M., Welling, P., Bukvova, H., Nyman, L., Bjork, B.-C., &amp; Hedlund, T. (2011). The Development of Open Access Journal Publishing from 1993 to 2009. PLoS ONE, 6(6), e20961. https://doi.org/10.1371/journal.pone.0020961                                       </span></td></tr>
+	<tr><td><span style="white-space: pre-wrap;">Paulus, F. M., Cruz, N., &amp; Krach, S. (2018). The Impact Factor Fallacy. Frontiers in Psychology, 9. https://doi.org/10.3389/fpsyg.2018.01487                                                                                                                         </span></td></tr>
+	<tr><td>Science, Digital; Hook, Daniel; Hahnel, Mark; Calvert, Ian (2019): The Ascent of Open Access. figshare. Journal contribution. https://doi.org/10.6084/m9.figshare.7618751                                                                                            </td></tr>
+	<tr><td>Shotton, D. (2018). Funders should mandate open citations. Nature, 553(7687), 129-129. https://doi.org/10.1038/d41586-018-00104-7                                                                                                                                    </td></tr>
+	<tr><td>Suber, P. (2012). Open access. Cambridge, Mass: MIT Press.                                                                                                                                                                                                           </td></tr>
+	<tr><td>Tennant, J. P., Waldner, F., Jacques, D. C., Masuzzo, P., Collister, L. B., &amp; Hartgerink, C. H. J. (2016). The academic, economic and societal impacts of Open Access: an evidence-based review. F1000Research, 5, 632. https://doi.org/10.12688/f1000research.8460.2</td></tr>
+</tbody>
+</table>
+
+
 
 As you can see, these are just raw citations, not divided into variables by their metadata elements (that is, with title in one column, author in another, etc.). But, we can now run a query to get precisely that from Crossref using `cr_works`. Because `cr_works` is not vectorized, we will need to build a loop using `map()` from the `purrr` package. 
 
@@ -986,6 +1274,7 @@ Don't mind the technical details--it is basically saying to take each row and lo
 
 
 ```R
+# loop through the references column, using cr_works() to look the item up and return the top 5 hits
 my_references_works_list <- purrr::map(
   my_references$reference,
   function(x) {
@@ -999,10 +1288,13 @@ The Crossref API assigns a score to each item returned within each query, giving
 
 
 ```R
+# for each reference looked up, get back the first result
 my_references_works_df <- my_references_works_list %>%
   purrr::map_dfr(., function(x) {
     x[1, ]
   })
+
+# print the data frame with select columns
 my_references_works_df %>%
   dplyr::select(title, doi, volume, issue, page, issued, url, publisher, reference.count, type, issn)
 ```
@@ -1011,6 +1303,7 @@ We can print just the titles to quickly see how well they match with the titles 
 
 
 ```R
+# print the title column
 my_references_works_df$title
 ```
 
@@ -1018,10 +1311,11 @@ Not bad! Looks like we got 6 out of 8, with problems on number 5 and 7. To see m
 
 ## Writing publications to CSV
 
-We will use the `write_csv()` function from the `readr` package to write our data to disk. 
+We will use the `write.csv()` function to write our data to disk as a CSV file. 
 
 
 ```R
+# assign the PLOS ONE ISSN and get the last two articles on file
 plosone_issn <- '1932-6203'
 plosone_publications <- cr_journals(issn = plosone_issn, works = TRUE, limit = 2) %>%
   pluck("data")
@@ -1031,12 +1325,13 @@ Unfortunately, you cannot simply write the `plosone_publications` data frame to 
 
 I run through three solutions at https://ciakovx.github.io/rcrossref.html#writing_publications_to_disk
 
-Here, we will use solution 3: You can use `mutate()` from `dplyr` to coerce the list columns into character vectors.
+Here, we will use solution 3: You can use `mutate()` from `dplyr` to coerce the list columns into character vectors with `as.character()`.
 
 First, identify the list vectors:
 
 
 ```R
+# use map_chr to print the column types
 purrr::map_chr(plosone_publications, typeof)
 ```
 
@@ -1044,6 +1339,7 @@ Then, coerce those columns to character:
 
 
 ```R
+# use mutate() to coerce list columns to character vectors
 plosone_publications_mutated <- plosone_publications %>%
   dplyr::mutate(author = as.character(author)) %>%
   dplyr::mutate(link = as.character(link)) %>%
@@ -1067,11 +1363,13 @@ First install the package and load it.
 
 
 ```R
+# install the roadoi package
 install.packages("roadoi")
 ```
 
 
 ```R
+# load the roadoi package
 library(roadoi)
 ```
 
@@ -1079,21 +1377,15 @@ library(roadoi)
 
 Your API calls to Unpaywall must include a valid email address where you can be reached in order to keep the service open and free for everyone. 
 
-Run this line of code, replacing the example with your email address:
-
-
-```R
-options(roadoi_email = "clarke.iakovakis@okstate.edu")
-```
-
 ## Checking OA status with `oadoi_fetch`
 
-We then create DOI vector and use the `oadoi_fetch()` function from `roadoid`. 
+We then create DOI vector and use the `oadoi_fetch()` function from `roadoi`. 
 
-
+**Be sure to replace the email below with your own**
 
 
 ```R
+# Use c() to create a vector of DOIs
 my_dois <- c("10.2139/ssrn.2697412", 
                         "10.1016/j.joi.2016.08.002", 
                         "10.1371/journal.pone.0020961", 
@@ -1101,14 +1393,17 @@ my_dois <- c("10.2139/ssrn.2697412",
                         "10.1038/d41586-018-00104-7", 
                         "10.12688/f1000research.8460.2", 
                         "10.7551/mitpress/9286.001.0001")
+
+# use oadoi_fetch() to get Unpaywall data on those DOIs
 my_dois_oa <- roadoi::oadoi_fetch(dois = my_dois,
-                                 email = "clarke.iakovakis@okstate.edu")
+                                 email = "name@example.edu")
 ```
 
 Look at the column names.
 
 
 ```R
+# print column names
 names(my_dois_oa)
 ```
 
@@ -1118,16 +1413,18 @@ We can see that Unpaywall could not find OA versions for two of the seven of the
 
 
 ```R
+# use filter() to overwrite the data frame and keep only items that are available OA
 my_dois_oa <- my_dois_oa %>%
-  filter(is_oa == TRUE)
+  dplyr::filter(is_oa == TRUE)
 ```
 
 As above, it is easier to use `unnest()` to more closely view one of the variables:
 
 
 ```R
+# print the data frame with best open access location unnested
 my_dois_oa %>%
-    unnest(best_oa_location)
+    tidyr::unnest(best_oa_location)
 ```
 
 # Next steps
